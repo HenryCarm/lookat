@@ -19,7 +19,7 @@ use std::collections::HashMap;
 /// The mod's id: its row in Options > Mods and its settings folder
 /// (`horizon-mods/.horizon-mod-data/lookat/`), the WebAssembly mod's too.
 pub const ID: &str = "lookat";
-pub const VERSION: &str = "0.2.1";
+pub const VERSION: &str = "0.2.2";
 pub const DESCRIPTION: &str = "What is under your crosshair at the top of the screen, as a vanilla tooltip: \
     a block's icon, name, harvest tool and where it comes from, a mob's name and health.";
 

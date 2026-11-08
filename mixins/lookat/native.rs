@@ -1,4 +1,4 @@
-// LookAt's adapter to the game (Horizon 142388e1c136e622652ec7505af15d8ad195e041,
+// LookAt's adapter to the game (Horizon 6475f62f3c834b7489e1816bf47f47ea5eb2b879,
 // see horizon-mixin.toml). Injected as `crate::game::lookat_native`: it reads
 // what the crosshair hits from the window's game, hands it to the
 // game-independent `crate::game::lookat` (runtime.rs), and draws the box it
@@ -57,9 +57,9 @@ impl Game<'_> {
         let width = |text: &str| self.native_text_width(text);
         let (w, h) = lk::content_size(&view, &width);
         let unscaled = (w + 2.0 * lk::FRAME, h + 2.0 * lk::FRAME);
-        // F3's debug screen has a column in each top corner (this commit's
-        // `native_corner_shown` only reports the left one): with it open,
-        // the box goes to the top centre, shrunk to keep clear of both.
+        // F3's debug screen takes both top corners in this commit
+        // (`native_corner_shown`): with it open, the box goes to the top
+        // centre, shrunk to keep clear of both.
         let f3 = self.lookat_f3_open();
         let corner = match s.position() {
             Position::Top => None,

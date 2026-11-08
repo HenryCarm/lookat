@@ -13,6 +13,16 @@ same look and the same settings, and it now sees entities.
 > **Native mods are not sandboxed.** Unlike the WebAssembly LookAt, a native mod is Rust source compiled into your own
 > Horizon executable and runs with your user rights. Read the source before building (it is small: `mixins/lookat/`).
 
+## What's new in 0.2.2
+
+- **Horizon Nightly 6475f62.** The pin moved from `142388e1c136e622652ec7505af15d8ad195e041` to
+  `6475f62f3c834b7489e1816bf47f47ea5eb2b879` (the launcher builds all installed native mods against the one commit and
+  refuses the whole build when one pins another). Nothing reads differently now: every internal `native.rs` reads
+  still exists by the same name and with the same signature in this commit, so the box looks and works as it did in
+  0.2.1. One comment was corrected: F3 takes both top corners in this commit (0.2.1's note assumed only the left was
+  reported); the behaviour is unchanged. Verified: `horizon-mixins apply` against `6475f62` stages clean
+  (`"status": "ok"`, 4 injections, 2 modules).
+
 ## What's new in 0.2.1
 
 - **F3 is kept clear.** With the debug screen open, a top-left or top-right box moves to the top centre (F3 has a
@@ -105,10 +115,10 @@ game function is hooked; these are the internals it reads, each because no hook 
 | `boss_overlay` (`bars`) | the boss bars' count, to sit under them at the top centre |
 | `debug_overlay::scale`, `renderer` (`config`), `settings.file` (`debugGuiScale`), `settings.force_unicode` | how large F3's columns are against the GUI, to keep a top-centre box between them (the hook point's `native_corner_shown` reports only F3's left column at this commit) |
 
-Pinned: Horizon `142388e1c136e622652ec7505af15d8ad195e041` and horizon-mixins
-`0d6b103c70633d8fd9443d8d0acd3aadaacedb06`, game 26.3, the same as TreeFall 0.3.0 and Mason 0.2.0, so the three build
-into one game (checked: `horizon-mixins plan` of all three, 20 injections and 14 modules, no conflict). When hook
-points cover the crosshair's target, entities and item icons, the pin can go.
+Pinned: Horizon `6475f62f3c834b7489e1816bf47f47ea5eb2b879` and horizon-mixins
+`ddd9700b21997c95d95ac6ee5ecafe3830cf622a`, game 26.3, the same as the other native mods on this Nightly (SmartF3
+0.1.1), so they build into one game (this bundle: `horizon-mixins apply`, 4 injections and 2 modules, status ok).
+When hook points cover the crosshair's target, entities and item icons, the pin can go.
 
 ## Limits
 
